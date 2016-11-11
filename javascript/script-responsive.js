@@ -1,5 +1,17 @@
 $(document).ready(function() {
 
+  $('#moodChoice').on('change', function() {
+    if ($(this).val() == 'A') {
+      $("#sheet1").attr("href", "php/center.php");
+    } else if ($(this).val() == 'B') {
+      $('#sheet0').attr("href","");
+      $("#sheet1").attr("href", "php/dark.php");
+    } else {
+      $('#sheet0').attr("href", "");
+      $("#sheet1").attr("href", "php/light.php");
+    }
+	});
+
   var socialMenu = function(){
     $('.icon-share').on('click',function(){
       $('.micrositeSocialMenu').toggleClass('show');

@@ -42,13 +42,8 @@
     <div id="div-gpt-ad-1452889091374-0" style="width:1px; height:1px;">
       <script type="text/javascript">googletag.cmd.push(function() { googletag.display('div-gpt-ad-1452889091374-0'); });</script>
     </div>
-    <link rel="stylesheet" href="">
-    <link rel="stylesheet" href="">
-    <link rel="stylesheet" href="">
-    <link rel="stylesheet" href="">
-    <link rel="stylesheet" href="">
-    <link rel="stylesheet" href="css/style-responsive.css">
-    <script src="javascript/handlebars.js"></script>
+    <link id="sheet0" rel="stylesheet" href="css/style-responsive.css">
+    <link id="sheet1" rel="stylesheet" href="php/center.php" type="text/css" media="screen">
     <script src="javascript/script-responsive.js"></script>
     <script src="javascript/jquery.menu-aim.js"></script>
     <script>TT("page", {"regHost":"http://users.techtarget.com","adScheme":"15","gaSiteAcct":"UA-19047342-10","lang":"en","ga":true,"timestamp":"2016-06-08 08:38:53","adId":"4500255912","siteName":"cloudsurround","siteType":"microsite/unisite","uaid":"UA-19047342-10","gaPageTrackUrl":"/page/etpk_0/ptpk_0/false/MICROSITE_LP/channel/cid_4500255912/date_null/mem_0/rtpk_0/idx_0","parentSite":"searchCloudComputing","pageIndex":0,"siteId":201,"atHost":"http://go.techtarget.com","isChannel":true,"appCode":"0","zone":"MICROSITE_LP"});</script>
@@ -65,8 +60,299 @@
     <link rel="apple-touch-icon-precomposed" sizes="114×114" href="/apple-touch-icon-114x114-precomposed.png">
     <link rel="apple-touch-icon-precomposed" sizes="72×72" href="/apple-touch-icon-72x72-precomposed.png">
     <link rel="apple-touch-icon-precomposed" href="/apple-touch-icon-precomposed.png">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/spectrum/1.8.0/spectrum.min.js"></script>
+    <script type="text/javascript" src="javascript/jspdf.min.js"></script>
+    <script type="text/javascript" src="javascript/html2canvas.js"></script>
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/spectrum/1.8.0/spectrum.min.css">
+    <style>
+      #editWindow {
+        background: #f5f5f5;
+        border-right:1px solid #e2e2e2;
+        /*bottom: -10%;
+        border-radius: 5px 5px  0 0;*/
+        color: #9b9a9a;
+        display: block;
+        font-family: Helvetica, Arial, Sans-serif;
+        font: 15px/1.8 Helvetica, Arial, Sans-serif;
+        font-weight: 200;
+        height: 100%;
+        /*left: 50%;*/
+        margin-left: -300px;
+        position: fixed;
+        top: 0;
+        width: 300px;
+        z-index: 9999999;
+      }
+      #editWindow .demo-settings {
+        padding:20px;
+        border-top: 1px solid #e5e5e5;
+        overflow-y:auto;
+      }
+      #editWindow .demo-settings-title {
+        text-transform: uppercase;
+        font-size: 10px;
+        color: #a6a5a5;
+      }
+      #editWindow .demo-header {
+        background: #00b3ac;
+        padding: 20px;
+        height: 90px;
+        color: #fff;
+      }
+      #editWindow .demo-header img {
+        height: 50px;
+        padding-right: 20px;
+        border-right: 1px solid #66d1cd;
+        float: left;
+      }
+      #editWindow .demo-header-title {
+        color: #fff;
+        line-height: 1.2em;
+        font-weight: 200;
+        margin-left: 135px;
+        margin-top: 7px
+      }
+      
+      #editWindow .demo-footer {
+        border-top: 1px solid #e5e5e5;
+        left:0;
+        bottom: 0;
+        position: absolute;
+        display: block;
+        width: 100%;
+        //float: left;
+        height: 36px;
+      }
+      #editWindow .demo-footer button {
+        border: none;
+      }
+      #editWindow .demo-footer button.demo-footer-button {
+        border-left: 1px solid #e5e5e5;
+        float: right;
+        text-transform: uppercase;
+        padding: 10px;
+        color: #d0d0d0;
+        font-weight: 600;
+        font-size: 12px;
+        background: none;
+        right:0;
+      }
+      
+      #editWindow .demo-footer button.demo-footer-button:hover {
+        color: #666;
+      }
+      #editWindow > div > p {
+        color: #9b9a9a;
+        font-weight: 200;
+        margin-bottom: 10px;
+      }
+      #editWindow input,
+      #editWindow select {
+        font-size: 16px;
+        padding: 10px;
+        margin-bottom: 15px;
+        color: #636262;
+        font-family: Helvetica, Arial, Sans-serif;
+        width: 260px;
+        background: #fff;
+        -webkit-background:none;
+        height: 40px;
+        border: 1px solid #e5e5e5;
+        border-radius: 3px;
+      }
+      
+      #editWindow input {
+        padding-right: 30px;
+        overflow: hidden;
+        text-overflow: ellipsis;
+      }
+      #editWindow .c1,
+      #editWindow .c2 {
+        padding-bottom: 15px;
+        width: 49%;
+        display: inline-block;
+      }
+      #editWindow .colorText1,
+      #editWindow .colorText2 {
+        color: #5f5f5f;
+      }
+      #editWindow p,
+      #editWindow li {
+        color: #9b9a9a;
+        font-weight: 200;
+        font-family: Helvetica, Arial, Sans-serif;
+      }
+      #editWindow.open { top:0;margin-left:0;}
+      #editWindow .pull {position: fixed;border:none;z-index:2;}
+      #editWindow .pull p:after{top:8px;position: relative;font-weight:600;font-size:20px;content: '+'}
+      #editWindow.open .pull {position:initial;left:0px;background: none;border-right: 1px solid #e5e5e5;}
+      #editWindow.open .pull p:after {color:#d0d0d0;font-weight:600;font-size:20px;content: '-'}
+      #editWindow.open .pull p:hover::after {
+        color: #666;
+      }
+      #editWindow .demo-settings p {position: relative}
+      #editWindow .clear-input {
+        position: absolute;
+        right: 10px;
+        top: 35px;
+        cursor: pointer;
+      }
+      
+      #editWindow .clear-input .icon-close {
+        color: #e5e5e5;
+      }
+      #editWindow .clear-input:hover .icon-close{
+        color: #cc0000;
+      }
+      
+      #editWindow,
+      #micrositeWrapper {
+        -webkit-transition: all 0.3s ease;
+        -moz-transition: all 0.3s ease;
+        transition: all 0.3s ease;
+      }
+      
+      body style, body > #micrositeWrapper > #editWindow > script {
+        /* display: block; */
+        overflow-x: scroll;
+        white-space: pre;
+      }
+      body {position: relative;}
+      .pull {
+        background: #333;
+        color: #fff;
+        cursor: pointer;
+        display: block;
+        float: none;
+        font-size: 20px;
+        line-height: 1;
+        text-align: center;
+        bottom: 0;
+        left: 0;
+        width: 40px !important;
+        height:35px;
+      }
+      .pull p {line-height:1; margin: 0 !important;}
+      #homepage #additionalResources {
+        display: none;
+      }
+      .sp-replacer {
+        border-color: #e2e2e2;
+        background: #fff;
+        margin-right: 10px;
+      }
+      .sp-replacer:hover {
+        border-color: #999;
+      }
+      .sp-replacer:hover > .sp-dd {
+        color: #999;
+      }
+      .sp-preview {
+        border-color: #e2e2e2;
+      }
+      .sp-dd {
+        color: #b3b3b3;
+      }
+    </style>
   </head>
   <body id="microsite" class="searchcloudcomputing_embedded">
+    <div id="editWindow">
+      <div class="demo-header"><img src="http://cdn.ttgtmedia.com/rms/ux/responsive/img/nav_logo@2x.png" alt="TechTarget">
+        <p class="demo-header-title">Embedded Sites Demo</p>
+      </div>
+      <div class="demo-settings">
+        <p>Select A Mood
+          <select id="moodChoice">
+            <option value="A" selected="selected">Center</option>
+            <option value="B">Dark</option>
+            <option value="C">Light</option>
+          </select>
+        </p>
+        <p>Change Intro Text
+          <input id="changeTitle" placeholder="Change Site Title" value="Productivity and Collaboration"><a class="clear-input"><i class="icon-close"></i></a>
+        </p>
+        <p>Select Number of Clients
+          <select id="clientChoice">
+            <option value="A" selected="selected">Single Client</option>
+            <option value="B">Two Clients</option>
+          </select>
+        </p>
+        <p>Select Layout
+          <select id="layoutChoice">
+            <option value="A" selected="selected">A: Additional Downloads</option>
+            <option value="B">B: Latest Resources</option>
+          </select>
+        </p>
+        <div class="c1">
+          <label for="html5colorpicker-color1">Pick Color 1</label>
+          <input name="html5colorpicker-color1" type="color" id="html5colorpicker-color1" style="width:100%;" class="c1"><span class="colorText1"></span>
+        </div>
+        <div class="c2">
+          <label for="html5colorpicker-color2">Pick Color 2</label>
+          <input name="html5colorpicker-color2" type="color" id="html5colorpicker-color2" style="width:100%;" class="c2"><span class="colorText2"></span>
+        </div>
+      </div>
+      <div class="demo-footer">
+        <button onclick="javascript:generatePDF();" class="demo-footer-button demo-button-pdf">PDF</button>
+        <button class="demo-footer-button demo-button-reset reset">Reset</button>
+        <div class="pull">
+          <p></p>
+        </div>
+      </div>
+    </div>
+    <script contenteditable>
+      $('.pull').on('click', function() {
+        $('#editWindow').toggleClass('open');
+      });
+      //- $(".c1").spectrum({
+      //-     allowEmpty:true,
+      //-     color: "#03a9f4",
+      //-     showInput: true,
+      //-     containerClassName: "full-spectrum",
+      //-     showInitial: true,
+      //-     showPalette: true,
+      //-     showSelectionPalette: true,
+      //-     //- showAlpha: true,
+      //-     maxPaletteSize: 10,
+      //-     preferredFormat: "hex",
+      //-     localStorageKey: "spectrum.demo"
+      //- });
+      //- $(".c2").spectrum({
+      //-     allowEmpty:true,
+      //-     color: "#ff9800",
+      //-     showInput: true,
+      //-     containerClassName: "full-spectrum",
+      //-     showInitial: true,
+      //-     showPalette: true,
+      //-     showSelectionPalette: true,
+      //-     //- showAlpha: true,
+      //-     maxPaletteSize: 10,
+      //-     preferredFormat: "hex",
+      //-     localStorageKey: "spectrum.demo"
+      //- });
+      //- 
+      //- var colorValue1 = $(".c1").spectrum("get");
+      //- var colorValue2 = $(".c2").spectrum("get");
+      //- 
+      //- $('span.colorText1').text(colorValue1);
+      //- $('span.colorText2').text(colorValue2);
+      //- 
+      //- $('#changeTitle').on('input',function() {
+      //-   $('.siteTitle').text($(this).val());
+      //-   if ($(this).val() == '') {
+      //-     $('.siteTitle').text('Productivity and Collaboration');  
+      //-   }
+      //- });
+      //- $('#layoutChoice').on('change', function() {
+      //-   if ($('#layoutChoice option:selected').val() == 'A') {
+      //-     $('#homepage #additionalResources').css('display','none');
+      //-     $('#homepage #additionalDownloads, #resources').css('display','block');
+      //-   } else {
+      //-     $('#homepage #additionalDownloads, #resources').css('display','none');
+      //-     $('#homepage #additionalResources').css('display','block');
+      //-   }
+      //- });
+    </script>
     <!-- Begin Google Tag Manager-->
     <noscript>
       <iframe src="//www.googletagmanager.com/ns.html?id=GTM-PWWZSH" height="0" width="0" style="display:none;visibility:hidden"></iframe>
@@ -300,7 +586,7 @@
               <p class="overlayCTA">Watch Now</p>
             </div>
             <div id="heroImageContainerOuter">
-              <div id="heroImageContainerInner"><img src="images/background-light.jpg"></div>
+              <div id="heroImageContainerInner"><img src="images/background-medium.jpg"></div>
             </div></a>
           <div id="videoPlayerContainer">
             <video id="video-1" data-account="1660622130" data-video-id="" data-playlist-id="4234547961001" data-player="2483e45a-7074-4c6a-8470-0e4a53b3bef8" data-embed="default" controls="" class="video-js"></video>
@@ -320,21 +606,21 @@
             </div>
             <ul>
               <li><a href="test.com">
-                  <div class="featuredAssetsHeading"><img src="images/assetImage5.png"></div>
+                  <div class="featuredAssetsHeading"><img src="images/assetImage4.png"></div>
                   <div class="featuredAssetsContent">
                     <h3>Lorem ipsum dolor sit amet, consectetur adipiscing</h3>
                     <p class="featuredAssetContent">Vestibulum id nisi dapibus, mollis tellus vel, fermentum elit. Sed rhoncus varius arcu in tristique. Donec elementum nibh non leo tempus rutrum. Pellentesque dui tellus, interdum congue sapien a, ultrices scelerisque nunc.</p>
                     <div class="featuredAssetCTALeft">View Now <span class="featuredAssetCTARight"><i class="icon-arrow"></i></span></div>
                   </div></a></li>
               <li><a href="test.com">
-                  <div class="featuredAssetsHeading"><img src="images/assetImage6.png"></div>
+                  <div class="featuredAssetsHeading"><img src="images/assetImage4.png"></div>
                   <div class="featuredAssetsContent">
                     <h3>Lorem ipsum dolor sit amet, consectetur adipiscing elit</h3>
                     <p class="featuredAssetContent">Vestibulum id nisi dapibus, mollis tellus vel, </p>
                     <div class="featuredAssetCTALeft">View Now <span class="featuredAssetCTARight"><i class="icon-arrow"></i></span></div>
                   </div></a></li>
               <li><a href="test.com">
-                  <div class="featuredAssetsHeading"><img src="images/assetImage7.png"></div>
+                  <div class="featuredAssetsHeading"><img src="images/assetImage4.png"></div>
                   <div class="featuredAssetsContent">
                     <h3>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin djhksdhjsh dhsjdhsj</h3>
                     <p class="featuredAssetContent">Vestibulum id nisi dapibus, mollis tellus vel, fermentum elit. Sed rhoncus varius arcu in tristique. Donec </p>
