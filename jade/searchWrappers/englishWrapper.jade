@@ -34,7 +34,7 @@ html.no-js.gt-ie8(dir='ltr', lang='en')
     script(src='http://cdn.ttgtmedia.com/rms/ux/responsive/js/responsive.min.js?v=6.49')
     script(type='text/javascript', src='http://cdn.ttgtmedia.com/rms/ux/javascript/writeCapture.js')
     script(type='text/javascript', src='http://cdn.ttgtmedia.com/rms/ux/javascript/jquery.writeCapture.js')
-    script(src='javascript/video.js')
+    //- script(src='javascript/video.js')
     script.
       (function() { var d=document,h=d.getElementsByTagName('head')[0],s=d.createElement('script'); s.type='text/javascript'; s.async=true; s.src='http://s.dpmsrv.com/dpm_b4c96d80854dd27e76d8cc9e21960eebda52e962.min.js'; h.appendChild(s); })();
     script(type='text/javascript').
@@ -264,24 +264,34 @@ html.no-js.gt-ie8(dir='ltr', lang='en')
         img(src="http://cdn.ttgtmedia.com/rms/ux/responsive/img/nav_logo@2x.png" alt="TechTarget")
         p.demo-header-title Embedded Sites Demo
       div.demo-settings
-        //- p.demo-settings-title Settings
         p Select A Mood
           select#moodChoice
             option(value="A", selected="selected") Center
             option(value="B") Dark
             option(value="C") Light
+        p Select A Number Of Topics
+          select#topicChoice
+            option(value="One") One
+            option(value="Many", selected="selected") Many
         p Change Intro Text
-          input#changeTitle(placeholder="Change Site Title" value="Productivity and Collaboration")
+          input#changeTitle(placeholder="Intro Text" value="Curabitur venenatis mauris finibus nisi hendrerit, sed semper lacus.")
           a.clear-input
             i.icon-close
-        p Select Number of Clients
-          select#clientChoice
-            option(value="A", selected="selected") Single Client
-            option(value="B") Two Clients
-        p Select Layout
+        p Select A Hero Option
+          select#heroChoice
+            option(value="SA", selected="selected") Single Asset
+            option(value="SV") Single Video
+            option(value="MV") Multiple Videos
+        p Select A Layout
           select#layoutChoice
-            option(value="A", selected="selected") A: Additional Downloads
-            option(value="B") B: Latest Resources
+            option(value="A", selected="selected") 3 Featured Items and Asset Listing
+            option(value="B") 3 Featured Items Only
+            option(value="C") Asset Listing Only
+        p Toggle Social/Ad
+          select#socialChoice
+            option(value="A", selected="selected") With Social and Ad
+            option(value="B") No Social or Ad
+        
         .c1
           label(for="html5colorpicker-color1") Pick Color 1
           input.c1(name="html5colorpicker-color1" type="color", id="html5colorpicker-color1", style="width:100%;")
@@ -299,35 +309,35 @@ html.no-js.gt-ie8(dir='ltr', lang='en')
       $('.pull').on('click', function() {
         $('#editWindow').toggleClass('open');
       });
-      //- $(".c1").spectrum({
-      //-     allowEmpty:true,
-      //-     color: "#03a9f4",
-      //-     showInput: true,
-      //-     containerClassName: "full-spectrum",
-      //-     showInitial: true,
-      //-     showPalette: true,
-      //-     showSelectionPalette: true,
-      //-     //- showAlpha: true,
-      //-     maxPaletteSize: 10,
-      //-     preferredFormat: "hex",
-      //-     localStorageKey: "spectrum.demo"
-      //- });
-      //- $(".c2").spectrum({
-      //-     allowEmpty:true,
-      //-     color: "#ff9800",
-      //-     showInput: true,
-      //-     containerClassName: "full-spectrum",
-      //-     showInitial: true,
-      //-     showPalette: true,
-      //-     showSelectionPalette: true,
-      //-     //- showAlpha: true,
-      //-     maxPaletteSize: 10,
-      //-     preferredFormat: "hex",
-      //-     localStorageKey: "spectrum.demo"
-      //- });
-      //- 
-      //- var colorValue1 = $(".c1").spectrum("get");
-      //- var colorValue2 = $(".c2").spectrum("get");
+      $(".c1").spectrum({
+          allowEmpty:true,
+          color: "#03a9f4",
+          showInput: true,
+          containerClassName: "full-spectrum",
+          showInitial: true,
+          showPalette: true,
+          showSelectionPalette: true,
+          //- showAlpha: true,
+          maxPaletteSize: 10,
+          preferredFormat: "hex",
+          localStorageKey: "spectrum.demo"
+      });
+      $(".c2").spectrum({
+          allowEmpty:true,
+          color: "#ff9800",
+          showInput: true,
+          containerClassName: "full-spectrum",
+          showInitial: true,
+          showPalette: true,
+          showSelectionPalette: true,
+          //- showAlpha: true,
+          maxPaletteSize: 10,
+          preferredFormat: "hex",
+          localStorageKey: "spectrum.demo"
+      });
+      
+      var colorValue1 = $(".c1").spectrum("get");
+      var colorValue2 = $(".c2").spectrum("get");
       //- 
       //- $('span.colorText1').text(colorValue1);
       //- $('span.colorText2').text(colorValue2);
@@ -984,6 +994,8 @@ html.no-js.gt-ie8(dir='ltr', lang='en')
                   a(href='http://searchcloudcomputing.techtarget.com/about/copyright') Copyright 2010 - 2016
                   | , TechTarget
     script(src='http://cdn.ttgtmedia.com/rms/ux/responsive/js/responsive-ui.min.js?v=6.49')
+    //- script(src="http://players.brightcove.net/1660622130/a2c15536-dda7-407b-ab8e-b49b9f4afc69_default/index.min.js")
+    //- script(type="text/javascript" src="http://cdn.ttgtmedia.com/rms/ux/javascript/microsite/videojs.ga.videocloud.js")
     // Begin Chartbeat
     script.
       var _sf_async_config={};

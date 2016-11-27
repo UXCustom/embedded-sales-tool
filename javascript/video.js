@@ -30,10 +30,9 @@ $(document).ready(function() {
       }
     }
 
-
     if (vidID != "") {
       myPlayer.catalog.getVideo(vidID, function(error, video) {
-        if (error) { console.log('Video error',error);
+        if (error) { console.log('Video error', error);
         } else {
 
           var w = video.duration;

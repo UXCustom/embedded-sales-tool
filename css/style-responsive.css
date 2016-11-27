@@ -972,6 +972,7 @@ video::-webkit-media-controls-start-playback-button {
 /* Hero player parent container */
 #heroPlayerContainer {
   background: #27354f;
+  display: none;
   margin: 0 auto;
   position: relative;
   width: 100%;

@@ -35,7 +35,6 @@
     <script src="http://cdn.ttgtmedia.com/rms/ux/responsive/js/responsive.min.js?v=6.49"></script>
     <script type="text/javascript" src="http://cdn.ttgtmedia.com/rms/ux/javascript/writeCapture.js"></script>
     <script type="text/javascript" src="http://cdn.ttgtmedia.com/rms/ux/javascript/jquery.writeCapture.js"></script>
-    <script src="javascript/video.js"></script>
     <script>(function() { var d=document,h=d.getElementsByTagName('head')[0],s=d.createElement('script'); s.type='text/javascript'; s.async=true; s.src='http://s.dpmsrv.com/dpm_b4c96d80854dd27e76d8cc9e21960eebda52e962.min.js'; h.appendChild(s); })();</script>
     <script type="text/javascript">var googletag = googletag || {}; googletag.cmd = googletag.cmd || []; (function() { var gads = document.createElement('script'); gads.async = true; gads.type = 'text/javascript'; var useSSL = 'https:' == document.location.protocol; gads.src = (useSSL ? 'https:' : 'http:') + '//www.googletagservices.com/tag/js/gpt.js'; var node = document.getElementsByTagName('script')[0]; node.parentNode.insertBefore(gads, node); })();</script>
     <script type="text/javascript">googletag.cmd.push(function() { googletag.defineSlot('/3618/mcrst', [1, 1], 'div-gpt-ad-1452889091374-0').addService(googletag.pubads()).setTargeting("mcrst", "cloudsurround1x1io1297001li1289580"); googletag.defineSlot('/3618/mcrst', [300, 250], 'div-gpt-ad-1452889091374-1').addService(googletag.pubads()).setTargeting("mcrst", "cloudsurround300x250io129700li1289580"); googletag.defineSlot('/3618/mcrst', [300, 250], 'div-gpt-ad-1452889091374-2').addService(googletag.pubads()).setTargeting("mcrst", "cloudsurround300x250cybersecurityio129700li1289580"); googletag.defineSlot('/3618/mcrst', [300, 250], 'div-gpt-ad-1452889091374-3').addService(googletag.pubads()).setTargeting("mcrst", "cloudsurrounddigitalinfra300x250io129700li1289580"); googletag.pubads().enableVideoAds(); googletag.enableServices(); });</script>
@@ -268,19 +267,33 @@
             <option value="C">Light</option>
           </select>
         </p>
-        <p>Change Intro Text
-          <input id="changeTitle" placeholder="Change Site Title" value="Productivity and Collaboration"><a class="clear-input"><i class="icon-close"></i></a>
-        </p>
-        <p>Select Number of Clients
-          <select id="clientChoice">
-            <option value="A" selected="selected">Single Client</option>
-            <option value="B">Two Clients</option>
+        <p>Select A Number Of Topics
+          <select id="topicChoice">
+            <option value="One">One</option>
+            <option value="Many" selected="selected">Many</option>
           </select>
         </p>
-        <p>Select Layout
+        <p>Change Intro Text
+          <input id="changeTitle" placeholder="Intro Text" value="Curabitur venenatis mauris finibus nisi hendrerit, sed semper lacus."><a class="clear-input"><i class="icon-close"></i></a>
+        </p>
+        <p>Select A Hero Option
+          <select id="heroChoice">
+            <option value="SA" selected="selected">Single Asset</option>
+            <option value="SV">Single Video</option>
+            <option value="MV">Multiple Videos</option>
+          </select>
+        </p>
+        <p>Select A Layout
           <select id="layoutChoice">
-            <option value="A" selected="selected">A: Additional Downloads</option>
-            <option value="B">B: Latest Resources</option>
+            <option value="A" selected="selected">3 Featured Items and Asset Listing</option>
+            <option value="B">3 Featured Items Only</option>
+            <option value="C">Asset Listing Only</option>
+          </select>
+        </p>
+        <p>Toggle Social/Ad
+          <select id="socialChoice">
+            <option value="A" selected="selected">With Social and Ad</option>
+            <option value="B">No Social or Ad</option>
           </select>
         </p>
         <div class="c1">
@@ -304,35 +317,35 @@
       $('.pull').on('click', function() {
         $('#editWindow').toggleClass('open');
       });
-      //- $(".c1").spectrum({
-      //-     allowEmpty:true,
-      //-     color: "#03a9f4",
-      //-     showInput: true,
-      //-     containerClassName: "full-spectrum",
-      //-     showInitial: true,
-      //-     showPalette: true,
-      //-     showSelectionPalette: true,
-      //-     //- showAlpha: true,
-      //-     maxPaletteSize: 10,
-      //-     preferredFormat: "hex",
-      //-     localStorageKey: "spectrum.demo"
-      //- });
-      //- $(".c2").spectrum({
-      //-     allowEmpty:true,
-      //-     color: "#ff9800",
-      //-     showInput: true,
-      //-     containerClassName: "full-spectrum",
-      //-     showInitial: true,
-      //-     showPalette: true,
-      //-     showSelectionPalette: true,
-      //-     //- showAlpha: true,
-      //-     maxPaletteSize: 10,
-      //-     preferredFormat: "hex",
-      //-     localStorageKey: "spectrum.demo"
-      //- });
-      //- 
-      //- var colorValue1 = $(".c1").spectrum("get");
-      //- var colorValue2 = $(".c2").spectrum("get");
+      $(".c1").spectrum({
+          allowEmpty:true,
+          color: "#03a9f4",
+          showInput: true,
+          containerClassName: "full-spectrum",
+          showInitial: true,
+          showPalette: true,
+          showSelectionPalette: true,
+          //- showAlpha: true,
+          maxPaletteSize: 10,
+          preferredFormat: "hex",
+          localStorageKey: "spectrum.demo"
+      });
+      $(".c2").spectrum({
+          allowEmpty:true,
+          color: "#ff9800",
+          showInput: true,
+          containerClassName: "full-spectrum",
+          showInitial: true,
+          showPalette: true,
+          showSelectionPalette: true,
+          //- showAlpha: true,
+          maxPaletteSize: 10,
+          preferredFormat: "hex",
+          localStorageKey: "spectrum.demo"
+      });
+      
+      var colorValue1 = $(".c1").spectrum("get");
+      var colorValue2 = $(".c2").spectrum("get");
       //- 
       //- $('span.colorText1').text(colorValue1);
       //- $('span.colorText2').text(colorValue2);
@@ -599,6 +612,14 @@
           </div>
           <script src="//players.brightcove.net/1660622130/2483e45a-7074-4c6a-8470-0e4a53b3bef8_default/index.min.js"></script>
         </div>
+        <div id="heroAssetContainer"><a id="heroImage" href="http://www.google.com" target="_blank">
+            <div id="heroOverlay">
+              <h2 class="overlayTitle">Why you should care about your information governance</h2>
+              <p class="overlayCTA">Learn More<i class="icon-lightbulb"></i></p>
+            </div>
+            <div id="heroImageContainerOuter">
+              <div id="heroImageContainerInner"><img src="images/background-medium.jpg"></div>
+            </div></a></div>
         <div id="featuredAssetContainer">
           <div id="featuredAssets" class="clearfix">
             <div class="featuredAssetsTitleContainer">

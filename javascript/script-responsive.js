@@ -12,6 +12,80 @@ $(document).ready(function() {
     }
 	});
 
+  $('#topicChoice').on('change', function() {
+    if ($(this).val() == 'One') {
+      $("#micrositeWrapper nav").css('display','none');
+    } else {
+      $("#micrositeWrapper nav").css('display','block');
+    }
+	});
+
+  $('#changeTitle').on('input',function() {
+    $('#wayFinderContainer h1').text($(this).val());
+    if ($(this).val() == '') {
+      $('#wayFinderContainer h1').text('Curabitur venenatis mauris finibus nisi hendrerit, sed semper lacus.');
+    }
+  });
+
+  $('#layoutChoice').on('change', function() {
+    if ($(this).val() == 'A') {
+      $("#featuredAssets").css('display','block');
+      $("#assetsListing").css('display','block');
+    } else if ($(this).val() == 'B') {
+      $("#featuredAssets").css('display','block');
+      $("#assetsListing").css('display','none');
+    } else if ($(this).val() == 'C') {
+      $("#featuredAssets").css('display','none');
+      $("#assetsListing").css('display','block');
+    }
+	});
+
+  $('#socialChoice').on('change', function() {
+    if ($(this).val() == 'A') {
+      $("#widgetsOuterContainer").css('display','block');
+    } else if ($(this).val() == 'B') {
+      $("#widgetsOuterContainer").css('display','none');
+    }
+	});
+
+  $('#heroChoice').on('change', function() {
+    if ($(this).val() == 'SA') {
+      if ($('#heroPlayerContainer').length == 1) {
+        $('#heroPlayerContainer').remove();
+        var assetHTML = $('<div id="heroAssetContainer"><a class="m-exitLink" id="heroImage" href="http://searchcloudstorage.techtarget.com/Embedded-Demo-Center-Asset/document/1447267428_342" target="_blank"><div id="heroOverlay"><h2 class="overlayTitle">How Converged Infrastructure Makes IT Easy</h2><p class="overlayCTA">Learn More<i class="icon-lightbulb"></i></p></div><div id="heroImageContainerOuter"><div id="heroImageContainerInner"><img src="http://cdn.ttgtmedia.com/microsites/democenterasset/images/Asset-Hero1.jpg"></div></div></a></div></div>');
+        $(assetHTML).insertAfter('#wayFinder');
+      }
+    } else if ($(this).val() == 'SV') {
+      if ($('#heroAssetContainer').length == 1) {
+        var docHead = document.getElementsByTagName('head')[0];
+        var vscript = document.createElement('script');
+        vscript.type = "text/javascript";
+        vscript.src = "javascript/video.js";
+        docHead.appendChild(vscript);
+
+        $('#heroAssetContainer').remove();
+        $('#heroPlaylistContainer, heroPlaylistInfoContainer').remove();
+        videojs('video-1').catalog.getVideo('5214501353001', function(error, video){
+          videojs('video-1').catalog.load(video);
+        });
+        $('#heroPlayerContainer').css('display','block');
+      }
+    } else if ($(this).val() == 'MV'){
+      var docHead = document.getElementsByTagName('head')[0];
+      var vscript = document.createElement('script');
+      vscript.type = "text/javascript";
+      vscript.src = "javascript/video.js";
+      docHead.appendChild(vscript);
+      $('#heroAssetContainer').remove();
+      $('#heroPlayerContainer').css('display','block');
+      videojs('video-1').catalog.getPlaylist('4234547961001', function(error, playlist){
+        videojs('video-1').catalog.load(playlist);
+      });
+    }
+	});
+
+
+
   var socialMenu = function(){
     $('.icon-share').on('click',function(){
       $('.micrositeSocialMenu').toggleClass('show');
