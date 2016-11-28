@@ -3,12 +3,15 @@ $(document).ready(function() {
   $('#moodChoice').on('change', function() {
     if ($(this).val() == 'A') {
       $("#sheet1").attr("href", "php/center.php");
+      $('#heroImageContainerInner img').attr('src', 'images/background-medium.jpg');
     } else if ($(this).val() == 'B') {
       $('#sheet0').attr("href","");
       $("#sheet1").attr("href", "php/dark.php");
+      $('#heroImageContainerInner img').attr('src', 'images/background-dark.jpg');
     } else {
       $('#sheet0').attr("href", "");
       $("#sheet1").attr("href", "php/light.php");
+      $('#heroImageContainerInner img').attr('src', 'images/background-light.jpg');
     }
 	});
 
@@ -48,38 +51,188 @@ $(document).ready(function() {
     }
 	});
 
+  var videoHTML = $('#videoPlayerContainer>div'),
+      videoTagID = videoHTML.attr('id'),
+      myPlayer,
+      vidID = videoHTML.data('video-id'),
+      playlistID = videoHTML.data('playlist-id'),
+      body = $('body');
+
   $('#heroChoice').on('change', function() {
     if ($(this).val() == 'SA') {
       if ($('#heroPlayerContainer').length == 1) {
-        $('#heroPlayerContainer').remove();
+        $('#heroPlayerContainer').css('display','none');
         var assetHTML = $('<div id="heroAssetContainer"><a class="m-exitLink" id="heroImage" href="http://searchcloudstorage.techtarget.com/Embedded-Demo-Center-Asset/document/1447267428_342" target="_blank"><div id="heroOverlay"><h2 class="overlayTitle">How Converged Infrastructure Makes IT Easy</h2><p class="overlayCTA">Learn More<i class="icon-lightbulb"></i></p></div><div id="heroImageContainerOuter"><div id="heroImageContainerInner"><img src="http://cdn.ttgtmedia.com/microsites/democenterasset/images/Asset-Hero1.jpg"></div></div></a></div></div>');
         $(assetHTML).insertAfter('#wayFinder');
       }
     } else if ($(this).val() == 'SV') {
       if ($('#heroAssetContainer').length == 1) {
-        var docHead = document.getElementsByTagName('head')[0];
-        var vscript = document.createElement('script');
-        vscript.type = "text/javascript";
-        vscript.src = "javascript/video.js";
-        docHead.appendChild(vscript);
+        function msToTime(duration) {
+          var milliseconds = parseInt((duration%1000)/100)
+          , seconds = parseInt((duration/1000)%60)
+          , minutes = parseInt((duration/(1000*60))%60)
+          , hours = parseInt((duration/(1000*60*60))%24);
 
-        $('#heroAssetContainer').remove();
-        $('#heroPlaylistContainer, heroPlaylistInfoContainer').remove();
-        videojs('video-1').catalog.getVideo('5214501353001', function(error, video){
-          videojs('video-1').catalog.load(video);
-        });
+          hours = (hours < 10) ? "0" + hours : hours;
+          minutes = (minutes < 10) ? "0" + minutes : minutes;
+          seconds = (seconds < 10) ? "0" + seconds : seconds;
+
+          if(hours < 1){
+            return minutes + ":" + seconds;
+          } else {
+            return hours + ":" + minutes + ":" + seconds;
+          }
+        }
+
+        $('#heroAssetContainer').css('display','none').removeClass('show');
+        $('#heroPlaylistContainer, #heroPlaylistInfoContainer').css('display','none').removeClass('show');
+
+        videojs('video-1').catalog.getVideo('5214501353001', function(error, video) {
+          if (error) { console.log('Video error', error);
+          } else {
+
+            var w = video.duration;
+            var tf = w.toFixed(3);
+            var x = tf.toString();
+            var y = x.replace(/\./g, '');
+            var z = parseInt(y,10);
+
+            $('.overlayDuration').html('<i class="icon-video-camera"></i>' + ' ' + 'Video: ' + msToTime(z)).show();
+            $('.overlayTitle').html(video.name).show();
+            $('.overlayCTA').show();
+            $('.spinner').remove();
+
+            videojs('video-1').catalog.load(video);
+
+            $('#heroImage').on('click tapone',function(){
+
+              videojs('video-1').catalog.load(video);
+
+              $('#videoPlayerContainer').addClass('show');
+              $('#heroImage').addClass('vjs-selected');
+              $('.vjs-playlist .vjs-playlist-item.vjs-selected .vjs-playlist-thumbnail').addClass('show');
+              $('#heroOverlay').hide();
+
+              videojs('video-1').play();
+
+              if(body.hasClass('header-desktop-fixed')){
+                $("html, body").animate({ scrollTop: $('#videoPlayerContainer').offset().top - 57},750);
+              } else if(body.hasClass('header-mobile-fixed')) {
+                $("html, body").animate({ scrollTop: $('#videoPlayerContainer').offset().top - 60},750);
+              } else {
+                $("html, body").animate({ scrollTop: $('#videoPlayerContainer').offset().top - 157},750);
+              }
+            });
+          }
+         });
+
+
         $('#heroPlayerContainer').css('display','block');
       }
     } else if ($(this).val() == 'MV'){
-      var docHead = document.getElementsByTagName('head')[0];
-      var vscript = document.createElement('script');
-      vscript.type = "text/javascript";
-      vscript.src = "javascript/video.js";
-      docHead.appendChild(vscript);
-      $('#heroAssetContainer').remove();
+      // var docHead = document.getElementsByTagName('head')[0];
+      // var vscript = document.createElement('script');
+      // vscript.type = "text/javascript";
+      // vscript.src = "javascript/video.js";
+      // docHead.appendChild(vscript);
+      $('#heroAssetContainer').css('display','none');
       $('#heroPlayerContainer').css('display','block');
-      videojs('video-1').catalog.getPlaylist('4234547961001', function(error, playlist){
-        videojs('video-1').catalog.load(playlist);
+      videojs('video-1').catalog.getPlaylist('5146939306001', function(error, playlist){
+        if (error) { console.log('Playlist error',error);
+        } else {
+          videojs('video-1').catalog.load(playlist);
+
+          var i = 0;
+          var videosExists = false;
+          var y = setInterval(function() {
+            checkVideos();
+          },1000);
+
+          function checkVideos() {
+            $('.vjs-playlist-ad-overlay').remove();
+            if (i > 10) {
+              clearInterval(y);
+            } else if ($(".vjs-playlist li").length >= 2) {
+              clearInterval(y);
+              videosExists = true;
+              //perform your actions here
+              if ($('.bx-wrapper').length < 1) {
+                $('.vjs-playlist').bxSlider({
+                  minSlides:1,
+                  maxSlides: 4,
+                  infiniteLoop: false,
+                  slideMargin: 10,
+                  slideWidth: 260,
+                  moveSlides: 1,
+                  nextSelector: '#slider-next',
+                  prevSelector: '#slider-prev',
+                  hideControlOnEnd: true
+                });
+              }
+
+              if ($('.vjs-playlist-item').length == 2){
+                // exactly 2
+                $('.vjs-playlist').addClass('twoItems');
+                $('#heroPlaylistInfoContainer').remove();
+              } else if ($('.vjs-playlist-item').length == 3){
+                // exactly 3
+                $('.vjs-playlist,#heroPlaylistInfoContainer').addClass('threeItems');
+                $('.videoInfo').text($('.vjs-playlist-item').length + ' Videos');
+              } else if ($('.vjs-playlist-item').length == 4){
+                // exactly 4
+                $('.vjs-playlist,#heroPlaylistInfoContainer').addClass('fourItems');
+                $('.videoInfo').text($('.vjs-playlist-item').length + ' Videos');
+              } else {
+                $('.vjs-playlist,#heroPlaylistInfoContainer').addClass('manyItems');
+                $('.videoInfo').text($('.vjs-playlist-item').length + ' Videos');
+              }
+
+              $('.overlayDuration').html('<i class="icon-video-camera"></i>' + ' ' + 'Video: ' + $('.vjs-playlist-item:first-child .vjs-playlist-duration').text());
+              $('.overlayTitle').html($('.vjs-playlist-item:first-child .vjs-playlist-name').text()).show();
+              $('.overlayCTA').show();
+
+              $('.bx-next').html('<i class="icon-play"></i>');
+              $('.bx-prev').html('<i class="icon-play"></i>');
+
+              $('.spinner').remove();
+
+              var item;
+              for (item = 0; item < $('.vjs-playlist-item').length; item++){
+                var img = $('.vjs-playlist-thumbnail img')[item];
+                img.src = playlist[item].poster;
+              }
+
+              $('#heroPlaylistContainer, #heroPlaylistInfoContainer').fadeIn('fast').addClass('show');
+
+              $('#heroImage,.vjs-playlist .vjs-playlist-item').on('click tapone',function(){
+                var itemIndex = $(this).index($(this).parent());
+                videojs('video-1').playlist.currentItem(itemIndex);
+
+                $('#videoPlayerContainer').addClass('show');
+                $('#heroImage').addClass('vjs-selected');
+                $('.vjs-playlist .vjs-playlist-item.vjs-selected .vjs-playlist-thumbnail').addClass('show');
+                $('#heroOverlay').hide();
+
+                videojs('video-1').play();
+
+                if(body.hasClass('header-desktop-fixed')){
+                  $("html, body").animate({ scrollTop: $('#videoPlayerContainer').offset().top - 57},750);
+                } else if(body.hasClass('header-mobile-fixed')) {
+                  $("html, body").animate({ scrollTop: $('#videoPlayerContainer').offset().top - 60},750);
+                } else {
+                  $("html, body").animate({ scrollTop: $('#videoPlayerContainer').offset().top - 157},750);
+                }
+              });
+
+              $('.vjs-playlist .vjs-playlist-item').each(function(){
+                $(this).on('click tapone',function(){
+                  $(this).find('.vjs-playlist-thumbnail').addClass('show');
+                });
+              });
+            }
+            i++;
+          }
+        }
       });
     }
 	});
