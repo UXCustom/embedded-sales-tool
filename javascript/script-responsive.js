@@ -1,10 +1,37 @@
 $(document).ready(function() {
 
+  colorsObj = new Object();
+
+	$("input[type=color]").change(function() {
+	  colorKey = $(this).attr('class');
+	  colorValue = $(this).val().replace("#", "");
+	  createParams(colorKey, colorValue);
+
+		var updatedCSS = $('#sheet1').attr('href');
+
+		var colorValue1 = $(".c1").spectrum("get");
+		var colorValue2 = $(".c2").spectrum("get");
+
+		$('p.colorText1').text(colorValue1);
+		$('p.colorText2').text(colorValue2);
+	});
+
+	function createParams (colorKey, colorValue) {
+	  colorsObj[colorKey] = colorValue;
+    var str = $('#sheet1').attr('href');
+    var nIndex = str.indexOf(".php");
+    var mood = str.substr(4, nIndex - 4);
+	  tempTxt = "php/" + mood + ".php?" + $.param(colorsObj);
+	  $("#sheet1").attr("href", tempTxt);
+	};
+
   $('#moodChoice').on('change', function() {
     if ($(this).val() == 'A') {
+      $('.demo-settings > .c2').show();
       $("#sheet1").attr("href", "php/center.php");
       $('#heroImageContainerInner img').attr('src', 'images/background-medium.jpg');
     } else if ($(this).val() == 'B') {
+      $('.demo-settings > .c2').hide();
       $('#sheet0').attr("href","");
       $("#sheet1").attr("href", "php/dark.php");
       $('#heroImageContainerInner img').attr('src', 'images/background-dark.jpg');
@@ -130,11 +157,6 @@ $(document).ready(function() {
         $('#heroPlayerContainer').css('display','block');
       }
     } else if ($(this).val() == 'MV'){
-      // var docHead = document.getElementsByTagName('head')[0];
-      // var vscript = document.createElement('script');
-      // vscript.type = "text/javascript";
-      // vscript.src = "javascript/video.js";
-      // docHead.appendChild(vscript);
       $('#heroAssetContainer').css('display','none');
       $('#heroPlayerContainer').css('display','block');
       videojs('video-1').catalog.getPlaylist('5146939306001', function(error, playlist){

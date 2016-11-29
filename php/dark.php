@@ -10,7 +10,7 @@
     echo "\n\n";
 
     // get the data from the CSS file as a string
-    $myCSS = file_get_contents('http://cdn.ttgtmedia.com/microsites/demodarktabs/css/style-responsive.css');
+    $myCSS = file_get_contents('../css/dark.css');
 
     // swap out color 1
     // does color exist and is it hexidecimal?
