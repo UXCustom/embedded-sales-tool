@@ -67,18 +67,11 @@ $(document).ready(function() {
 
   $('#moodChoice').on('change', function() {
     if ($(this).val() == 'A') {
-      $('.demo-settings > .c2').show();
-      $("#sheet1").attr("href", "php/center.php");
-      $('#heroImageContainerInner img').attr('src', 'images/background-medium.jpg');
+      window.location = "./";
     } else if ($(this).val() == 'B') {
-      $('.demo-settings > .c2').hide();
-      $('#sheet0').attr("href","");
-      $("#sheet1").attr("href", "php/dark.php");
-      $('#heroImageContainerInner img').attr('src', 'images/background-dark.jpg');
+      window.location = "../Dark";
     } else {
-      $('#sheet0').attr("href", "");
-      $("#sheet1").attr("href", "php/light.php");
-      $('#heroImageContainerInner img').attr('src', 'images/background-light.jpg');
+      window.location = "../Light";
     }
 	});
 
