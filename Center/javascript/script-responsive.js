@@ -1,5 +1,30 @@
 $(document).ready(function() {
 
+  var switchSiteType = function() {
+    var siteTypes = [
+      {
+        "id": "1",
+        "name": "article",
+        "url": "http://productdevelopment.techtarget.com/projects/custom/prototypes/articleBased/sales-tool/"
+      },
+      {
+        "id": "2",
+        "name": "embedded",
+        "url": "http://productdevelopment.techtarget.com/projects/custom/prototypes/sales-tools/embedded/"
+      }
+    ];
+    var totalSiteTypes = $(siteTypes).length;
+    $("#siteType").change(function() {
+      var selectedOptionValue = $("#siteType option:selected").val();
+      for (i = 0; i < totalSiteTypes; i++) {
+        var option = siteTypes[i];
+        if (option.id === selectedOptionValue) {
+          window.open (siteTypes[i].url,'_self',false);
+        }
+      }
+    });
+  }
+
   var socialMenu = function(){
     $('.icon-share').on('click',function(){
       $('.micrositeSocialMenu').toggleClass('show');
@@ -405,6 +430,7 @@ $(document).ready(function() {
     }
   }
 
+  switchSiteType();
   socialMenu();
   headerNavActiveTab();
   tabSelection();
