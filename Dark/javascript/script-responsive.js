@@ -483,6 +483,22 @@ $(document).ready(function() {
   toggleMenuOnArrowClick();
   // end Site Type Nav functionality
 
+  // start adjust height of demo tool window
+  var adjustEditWindowHeight = function() {
+    var editWindow = document.getElementById("editWindow"),
+        demoHeader = document.getElementsByClassName("demo-header"),
+        demoSiteNav = document.getElementsByClassName("demo-site-nav"),
+        demoFooter = document.getElementsByClassName("demo-footer"),
+        editWindowHeight = editWindow.offsetHeight,
+        demoHeaderHeight = demoHeader[0].offsetHeight,
+        demoSiteNavHeight = demoSiteNav[0].offsetHeight,
+        demoFooterHeight = demoFooter[0].offsetHeight,
+        demoSettingsHeight =  editWindowHeight-demoHeaderHeight-demoSiteNavHeight-demoFooterHeight;
+      $('.demo-settings').css("height",demoSettingsHeight);
+  }
+  adjustEditWindowHeight();
+  // end adjust height of demo tool window
+
   socialMenu();
   headerNavActiveTab();
   tabSelection();
@@ -491,6 +507,7 @@ $(document).ready(function() {
   sponsoredContent();
 
   $(window).on('resize',function(){
+    adjustEditWindowHeight();
     if($(window).width() < 960){
       if($('#assetsList li').length > 3) {
         $('.assetListingExpand').show();
