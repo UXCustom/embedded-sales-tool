@@ -84,12 +84,15 @@ a {
   25% {
     -webkit-transform: translateX(42px) rotate(-90deg) scale(0.5);
   }
+
   50% {
     -webkit-transform: translateX(42px) translateY(42px) rotate(-180deg);
   }
+
   75% {
     -webkit-transform: translateX(0px) translateY(42px) rotate(-270deg) scale(0.5);
   }
+
   100% {
     -webkit-transform: rotate(-360deg);
   }
@@ -99,18 +102,22 @@ a {
     transform: translateX(42px) rotate(-90deg) scale(0.5);
     -webkit-transform: translateX(42px) rotate(-90deg) scale(0.5);
   }
+
   50% {
     transform: translateX(42px) translateY(42px) rotate(-179deg);
     -webkit-transform: translateX(42px) translateY(42px) rotate(-179deg);
   }
+
   50.1% {
     transform: translateX(42px) translateY(42px) rotate(-180deg);
     -webkit-transform: translateX(42px) translateY(42px) rotate(-180deg);
   }
+
   75% {
     transform: translateX(0px) translateY(42px) rotate(-270deg) scale(0.5);
     -webkit-transform: translateX(0px) translateY(42px) rotate(-270deg) scale(0.5);
   }
+
   100% {
     transform: rotate(-360deg);
     -webkit-transform: rotate(-360deg);
@@ -1016,6 +1023,7 @@ video::-webkit-media-controls-start-playback-button {
   0%, 40%, 100% {
     -webkit-transform: scaleY(0.4);
   }
+
   20% {
     -webkit-transform: scaleY(1);
   }
@@ -1025,6 +1033,7 @@ video::-webkit-media-controls-start-playback-button {
     transform: scaleY(0.4);
     -webkit-transform: scaleY(0.4);
   }
+
   20% {
     transform: scaleY(1);
     -webkit-transform: scaleY(1);
@@ -1104,7 +1113,7 @@ video::-webkit-media-controls-start-playback-button {
 }
 #heroImage #heroOverlay .overlayCTA {
   background: #27354f;
-  color: #fff;
+  color: white;
   display: none;
   font-family: arial;
   font-size: 12px;
@@ -2123,7 +2132,7 @@ video::-webkit-media-controls-start-playback-button {
   #heroPlaylistContainer .vjs-playlist.manyItems .vjs-playlist-item .vjs-playlist-duration, #heroPlaylistContainer .vjs-playlist.manyItems .vjs-playlist-item:hover .vjs-playlist-duration, #heroPlaylistContainer .vjs-playlist.manyItems .vjs-playlist-item.vjs-selected .vjs-playlist-duration, #heroPlaylistContainer .vjs-playlist.manyItems .vjs-playlist-item.vjs-selected:hover .vjs-playlist-duration, #heroPlaylistContainer .vjs-mouse.vjs-playlist.manyItems .vjs-playlist-item .vjs-playlist-duration, #heroPlaylistContainer .vjs-mouse.vjs-playlist.manyItems .vjs-playlist-item:hover .vjs-playlist-duration, #heroPlaylistContainer .vjs-mouse.vjs-playlist.manyItems .vjs-playlist-item.vjs-selected .vjs-playlist-duration, #heroPlaylistContainer .vjs-mouse.vjs-playlist.manyItems .vjs-playlist-item.vjs-selected:hover .vjs-playlist-duration {
     background: #000;
     bottom: 7px;
-    color: #fff;
+    color: white;
     left: inherit;
     padding: 4px 6px;
     right: 7px;
@@ -2375,7 +2384,7 @@ video::-webkit-media-controls-start-playback-button {
   position: absolute;
   bottom: 0;
   left: 0;
-  background: #666 \9;
+  background: #666666 \9;
   background: rgba(80, 80, 80, 0.75);
   width: 100%;
 }
@@ -2464,7 +2473,7 @@ video::-webkit-media-controls-start-playback-button {
 }
 #heroAssetContainer #heroImage #heroOverlay .overlayCTA {
   background: #27354f;
-  color: #fff;
+  color: white;
   display: block;
   font-family: arial;
   font-size: 12px;
@@ -2622,7 +2631,7 @@ video::-webkit-media-controls-start-playback-button {
 }
 #featuredAssets .featuredAssetsTitleContainer h2 {
   margin-bottom: 25px;
-  color: #666;
+  color: #666666;
   font-size: 14px;
   line-height: 16px;
   text-align: center;
@@ -2702,7 +2711,7 @@ video::-webkit-media-controls-start-playback-button {
 }
 #assetsListing .assetsListingTitleContainer h2 {
   margin-bottom: 25px;
-  color: #666;
+  color: #666666;
   font-size: 14px;
   line-height: 16px;
   text-align: center;
@@ -2761,7 +2770,7 @@ video::-webkit-media-controls-start-playback-button {
   padding-bottom: 30px;
 }
 #assetsListing ul li a:hover .assetsListingHeading h3 {
-  color: #000;
+  color: black;
 }
 #assetsListing ul li a:hover .assetsListingContent .assetCTA {
   color: #0096d6;
@@ -2779,7 +2788,7 @@ video::-webkit-media-controls-start-playback-button {
   font-family: latomedium;
   font-size: 16px;
   line-height: 22px;
-  color: #666;
+  color: #666666;
 }
 #assetsListing ul .assetsListingContent a {
   color: #323232;
@@ -3207,7 +3216,7 @@ video::-webkit-media-controls-start-playback-button {
   text-align: center;
   cursor: pointer;
   color: #fff;
-  background-color: #999;
+  background-color: #999999;
   text-transform: uppercase;
 }
 #micrositeWrapper #micrositeSocialFeeds .micrositeSocialFeedNav ul li i {
@@ -4018,4 +4027,43 @@ body {
   color: #b3b3b3;
 }
 
-/*# sourceMappingURL=style-responsive.css.map */
+/* demo-site-nav */
+#editWindow .demo-site-nav {
+  color: #fff;
+  background: #e4e4e4;
+  line-height: 1.2em;
+  position: relative;
+}
+
+#editWindow .demo-site-nav li {
+  font-weight: 600;
+  font-size: 15px;
+  height: 40px;
+  padding: 0 20px;
+  line-height: 40px;
+}
+
+#editWindow .demo-site-nav.show li:hover {
+  background: #fff;
+  color: #00b3ac;
+  cursor: pointer;
+}
+
+#editWindow .demo-site-nav .icon {
+  color: #00b3ac;
+  position: absolute;
+  right: 20px;
+  top: 13px;
+  cursor: pointer;
+}
+
+#editWindow .demo-site-nav .icon:hover {
+  color: #13564d;
+}
+
+#editWindow .demo-site-nav .icon.icon-arrow-up {
+  -ms-transform: rotate(180deg);
+  -moz-transform: rotate(180deg);
+  -webkit-transform: rotate(180deg);
+  transform: rotate(180deg);
+}

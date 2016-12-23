@@ -75,12 +75,14 @@ html.no-js.gt-ie8(dir='ltr', lang='en')
       div.demo-header
         img(src="http://cdn.ttgtmedia.com/rms/ux/responsive/img/nav_logo@2x.png" alt="TechTarget")
         p.demo-header-title Embedded Sites Demo
+      div.demo-site-nav.hideNav
+        ul.demo-site-nav-list
+          li.demo-site-nav-list-item(data-id='1') Article
+          li.demo-site-nav-list-item(data-id='2') Embedded - Center
+          li.demo-site-nav-list-item(data-id='3').selected Embedded - Dark
+          li.demo-site-nav-list-item(data-id='4') Embedded - Light
+        i.icon.icon-arrow-down(data-icon='5')
       div.demo-settings
-        p Select A Mood
-          select#moodChoice
-            option(value="A") Center
-            option(value="B", selected="selected") Dark
-            option(value="C") Light
         p Select A Number Of Topics
           select#topicChoice
             option(value="One") One
