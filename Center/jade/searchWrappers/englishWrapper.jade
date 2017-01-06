@@ -72,57 +72,71 @@ html.no-js.gt-ie8(dir='ltr', lang='en')
     script(type="text/javascript" src="javascript/salesTool.js")
   body#microsite.searchcloudcomputing_embedded
     #editWindow
-      div.demo-header
-        img(src="http://cdn.ttgtmedia.com/rms/ux/responsive/img/nav_logo@2x.png" alt="TechTarget")
-        p.demo-header-title Embedded Sites Demo
-      div.demo-site-nav.hideNav
-        ul.demo-site-nav-list
-          li.demo-site-nav-list-item(data-id='1') Article
-          li.demo-site-nav-list-item(data-id='2').selected Embedded - Center
-          li.demo-site-nav-list-item(data-id='3') Embedded - Dark
-          li.demo-site-nav-list-item(data-id='4') Embedded - Light
-        i.icon.icon-arrow-down(data-icon='5')
-      div.demo-settings
-        //-p Select A Mood
-          select#moodChoice
-            option(value="A", selected="selected") Center
-            option(value="B") Dark
-            option(value="C") Light
-        p Select A Number Of Topics
-          select#topicChoice
-            option(value="One") One
-            option(value="Many", selected="selected") Many
-        p Change Intro Text
-          input#changeTitle(placeholder="Intro Text" value="Curabitur venenatis mauris finibus nisi hendrerit, sed semper lacus.")
-          a.clear-input
-            i.icon-close
-        p Select A Hero Option
-          select#heroChoice
-            option(value="SA", selected="selected") Single Asset
-            option(value="SV") Single Video
-            option(value="MV") Multiple Videos
-        p Select A Layout
-          select#layoutChoice
-            option(value="A", selected="selected") 3 Featured Items and Asset Listing
-            option(value="B") 3 Featured Items Only
-            option(value="C") Asset Listing Only
-        p Toggle Social/Ad
-          select#socialChoice
-            option(value="A", selected="selected") With Social and Ad
-            option(value="B") No Social or Ad
-        .c1
-          label(for="html5colorpicker-color1") Client Color 1
-          input.c1(name="html5colorpicker-color1" type="color", id="html5colorpicker-color1", style="width:100%;")
-          span.colorText1
-        .c2
-          label(for="html5colorpicker-color2") Client Color 2
-          input.c2(name="html5colorpicker-color2" type="color", id="html5colorpicker-color2", style="width:100%;")
-          span.colorText2
-      div.demo-footer
-        button.demo-footer-button.demo-button-pdf(onclick="javascript:generatePDF();") PDF
-        button.demo-footer-button.demo-button-reset.reset Reset
-        .pull
-          p
+      form#demo-email-settings-form(action="mailto:cguarrera@techtarget.com?subject=myform_submission")(enctype="text/plain")
+        div.demo-header
+          img(src="http://cdn.ttgtmedia.com/rms/ux/responsive/img/nav_logo@2x.png" alt="TechTarget")
+          p.demo-header-title Embedded Sites Demo
+        div.demo-site-nav.hideNav
+          ul.demo-site-nav-list
+            li.demo-site-nav-list-item(data-id='1') Article
+            li.demo-site-nav-list-item(data-id='2').selected Embedded - Center
+            li.demo-site-nav-list-item(data-id='3') Embedded - Dark
+            li.demo-site-nav-list-item(data-id='4') Embedded - Light
+          i.icon.icon-arrow-down(data-icon='5')
+        div.demo-settings
+          //-p Select A Mood
+            select#moodChoice
+              option(value="A", selected="selected") Center
+              option(value="B") Dark
+              option(value="C") Light
+          p Select A Number Of Topics
+            select#topicChoice
+              option(value="One") One
+              option(value="Many", selected="selected") Many
+          p Change Intro Text
+            input#changeTitle(placeholder="Intro Text" value="Curabitur venenatis mauris finibus nisi hendrerit, sed semper lacus.")
+            a.clear-input
+              i.icon-close
+          p Select A Hero Option
+            select#heroChoice
+              option(value="SA", selected="selected") Single Asset
+              option(value="SV") Single Video
+              option(value="MV") Multiple Videos
+          p Select A Layout
+            select#layoutChoice
+              option(value="A", selected="selected") 3 Featured Items and Asset Listing
+              option(value="B") 3 Featured Items Only
+              option(value="C") Asset Listing Only
+          p Toggle Social/Ad
+            select#socialChoice
+              option(value="A", selected="selected") With Social and Ad
+              option(value="B") No Social or Ad
+          .c1
+            label(for="html5colorpicker-color1") Client Color 1
+            input.c1(name="html5colorpicker-color1" type="color", id="html5colorpicker-color1", style="width:100%;")
+            span.colorText1
+          .c2
+            label(for="html5colorpicker-color2") Client Color 2
+            input.c2(name="html5colorpicker-color2" type="color", id="html5colorpicker-color2", style="width:100%;")
+            span.colorText2
+        div.demo-footer
+          a(title="Email These Settings").demo-footer-button.demo-button-email(onclick="javascript:getSettings();") Email
+          button(title="Download PDF").demo-footer-button.demo-button-pdf(onclick="javascript:generatePDF();") PDF
+          button(title="Reset Settings").demo-footer-button.demo-button-reset.reset Reset
+          .pull(title="Close")
+            p
+    script(getSettings).
+      function getSettings() {
+        var siteType = $('.demo-site-nav-list-item.selected').text(),
+                topicChoice = $('#topicChoice option:selected').val(),
+                heroChoice = $('#heroChoice option:selected').text(),
+                layoutChoice = $('#heroChoice option:selected').text(),
+                socialChoice = $('#socialChoice option:selected').text(),
+                colorText1 = $('.colorText1').text(),
+                colorText2 = $('.colorText2').text();
+        var mailto = 'mailto:?body=Site Type: '+ siteType+'%0D%0A' +'Number of Topics: '+topicChoice+'%0D%0A'+'Hero Image: '+heroChoice+'%0D%0A'+'Layout: '+layoutChoice+'%0D%0A'+'Social: '+socialChoice+'%0D%0A'+'Color Text 1: '+colorText1+'%0D%0A'+'Color Text 2: '+colorText2;
+        $('.demo-button-email').attr('href',mailto);
+      }
     script(generatePDF).
       function generatePDF() {
         $('#editWindow').hide();

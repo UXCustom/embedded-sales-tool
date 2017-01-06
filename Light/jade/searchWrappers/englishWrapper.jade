@@ -119,10 +119,23 @@ html.no-js.gt-ie8(dir='ltr', lang='en')
           input.c2(name="html5colorpicker-color2" type="color", id="html5colorpicker-color2", style="width:100%;")
           span.colorText2
       div.demo-footer
-        button.demo-footer-button.demo-button-pdf(onclick="javascript:generatePDF();") PDF
-        button.demo-footer-button.demo-button-reset.reset Reset
-        .pull
+        a(title="Email These Settings").demo-footer-button.demo-button-email(onclick="javascript:getSettings();") Email
+        button(title="Download PDF").demo-footer-button.demo-button-pdf(onclick="javascript:generatePDF();") PDF
+        button(title="Reset Settings").demo-footer-button.demo-button-reset.reset Reset
+        .pull(title="Close")
           p
+      script(getSettings).
+        function getSettings() {
+          var siteType = $('.demo-site-nav-list-item.selected').text(),
+                  topicChoice = $('#topicChoice option:selected').val(),
+                  heroChoice = $('#heroChoice option:selected').text(),
+                  layoutChoice = $('#heroChoice option:selected').text(),
+                  socialChoice = $('#socialChoice option:selected').text(),
+                  colorText1 = $('.colorText1').text(),
+                  colorText2 = $('.colorText2').text();
+          var mailto = 'mailto:?body=Site Type: ' + siteType + '%0D%0A' + 'Number of Topics: ' + topicChoice + '%0D%0A' + 'Hero Image: ' + heroChoice + '%0D%0A' + 'Layout: ' + layoutChoice + '%0D%0A' + 'Social: ' + socialChoice + '%0D%0A' + 'Color Text 1: ' + colorText1 + '%0D%0A' + 'Color Text 2: ' + colorText2;
+          $('.demo-button-email').attr('href', mailto);
+        }
     script(generatePDF).
       function generatePDF() {
         $('#editWindow').hide();
