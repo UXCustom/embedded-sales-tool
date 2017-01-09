@@ -3564,26 +3564,6 @@ ul#navList li a {
   height: 36px;
 }
 
-#editWindow .demo-footer button {
-  border: none;
-}
-
-#editWindow .demo-footer button.demo-footer-button {
-  border-left: 1px solid #e5e5e5;
-  float: right;
-  text-transform: uppercase;
-  padding: 10px;
-  color: #d0d0d0;
-  font-weight: 600;
-  font-size: 12px;
-  background: none;
-  right: 0;
-}
-
-#editWindow .demo-footer button.demo-footer-button:hover {
-  color: #666;
-}
-
 #editWindow > div > p {
   color: #9b9a9a;
   font-weight: 200;
