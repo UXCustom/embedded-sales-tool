@@ -96,6 +96,18 @@
             <option value="MV">Multiple Videos</option>
           </select>
         </p>
+        <p>Select a Hero Image
+          <select id="heroImageChoice">
+            <option value="1" selected="selected">1. Clapping Hands</option>
+            <option value="2">2. Hand holding mobile phone</option>
+            <option value="3">3. Man using laptop in data center</option>
+            <option value="4">4. Data Center</option>
+            <option value="5">5. Data Center - Zoomed In</option>
+            <option value="6">6. Data Visualization</option>
+            <option value="7">7. Silhouettes of Employees</option>
+            <option value="8">8. Conference Room of Employees</option>
+          </select>
+        </p>
         <p>Select A Layout
           <select id="layoutChoice">
             <option value="A" selected="selected">3 Featured Items and Asset Listing</option>
@@ -114,7 +126,7 @@
           <input name="html5colorpicker-color1" type="color" id="html5colorpicker-color1" style="width:100%;" class="c1"><span class="colorText1"></span>
         </div>
       </div>
-      <div class="demo-footer"><a title="Email These Settings" onclick="javascript:getSettings();" class="demo-footer-button demo-button-email">Email</a>
+      <div class="demo-footer"><a title="Email These Settings" class="demo-footer-button demo-button-email">Email</a>
         <button title="Download PDF" onclick="javascript:generatePDF();" class="demo-footer-button demo-button-pdf">PDF</button>
         <button title="Reset Settings" class="demo-footer-button demo-button-reset reset">Reset</button>
         <div title="Close" class="pull">
@@ -122,19 +134,6 @@
         </div>
       </div>
     </div>
-    <script getSettings>
-      function getSettings() {
-        var siteType = $('.demo-site-nav-list-item.selected').text(),
-                topicChoice = $('#topicChoice option:selected').val(),
-                heroChoice = $('#heroChoice option:selected').text(),
-                layoutChoice = $('#heroChoice option:selected').text(),
-                socialChoice = $('#socialChoice option:selected').text(),
-                colorText1 = $('.colorText1').text(),
-                colorText2 = $('.colorText2').text();
-        var mailto = 'mailto:?body=Site Type: ' + siteType + '%0D%0A' + 'Number of Topics: ' + topicChoice + '%0D%0A' + 'Hero Image: ' + heroChoice + '%0D%0A' + 'Layout: ' + layoutChoice + '%0D%0A' + 'Social: ' + socialChoice + '%0D%0A' + 'Color Text 1: ' + colorText1;
-        $('.demo-button-email').attr('href', mailto);
-      }
-    </script>
     <script generatePDF>
       function generatePDF() {
         $('#editWindow').hide();
