@@ -538,9 +538,9 @@ $(document).ready(function() {
         heroChoice = $('#heroChoice option:selected').text(),
         layoutChoice = $('#heroChoice option:selected').text(),
         socialChoice = $('#socialChoice option:selected').text(),
-        colorText1 = $('.colorText1').text(),
-        colorText2 = $('.colorText2').text();
-    var mailto = 'mailto:?body=Site Type: '+ siteType+'%0D%0A' +'Number of Topics: '+topicChoice+'%0D%0A'+'Hero Image: '+heroChoice+'%0D%0A'+'Layout: '+layoutChoice+'%0D%0A'+'Social: '+socialChoice+'%0D%0A'+'Color Text 1: '+colorText1+'%0D%0A'+'Color Text 2: '+colorText2;
+        colorText1 = $('.colorText1').text();
+        //colorText2 = $('.colorText2').text();
+    var mailto = 'mailto:?body=Site Type: '+ siteType+'%0D%0A' +'Number of Topics: '+topicChoice+'%0D%0A'+'Hero Image: '+heroChoice+'%0D%0A'+'Layout: '+layoutChoice+'%0D%0A'+'Social: '+socialChoice+'%0D%0A'+'Color Text 1: '+colorText1;
     $('.demo-footer-button.demo-button-email').attr('href',mailto);
   }
   getSettings();
