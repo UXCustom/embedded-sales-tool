@@ -210,11 +210,11 @@ body {position: relative;}
   height: 40px;
   padding: 0 20px;
   line-height: 40px;
+  cursor: pointer !important;
 }
 #editWindow .demo-site-nav.show li:hover {
   background: #fff;
   color: #00b3ac;
-  cursor: pointer;
 }
 #editWindow .demo-site-nav .icon {
   color: #00b3ac;
