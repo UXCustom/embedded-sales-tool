@@ -74,13 +74,13 @@ html.no-js.gt-ie8(dir='ltr', lang='en')
     #editWindow
       div.demo-header
         img(src="http://cdn.ttgtmedia.com/rms/ux/responsive/img/nav_logo@2x.png" alt="TechTarget")
-        p.demo-header-title Embedded Sites Demo
+        p.demo-header-title Templated Sites Demo
       div.demo-site-nav.hideNav
         ul.demo-site-nav-list
+          li.demo-site-nav-list-item(data-id='4').selected Embedded - Light
           li.demo-site-nav-list-item(data-id='1') Article
           li.demo-site-nav-list-item(data-id='2') Embedded - Center
           li.demo-site-nav-list-item(data-id='3') Embedded - Dark
-          li.demo-site-nav-list-item(data-id='4').selected Embedded - Light
           li.demo-site-nav-list-item(data-id='5') Native Advertising
         i.icon.icon-arrow-down(data-icon='5')
       div.demo-settings
@@ -104,14 +104,17 @@ html.no-js.gt-ie8(dir='ltr', lang='en')
             option(value="MV") Multiple Videos
         p Select a Hero Image
           select#heroImageChoice
-            option(value="1", selected="selected") 1. Clapping Hands
-            option(value="2") 2. Hand holding mobile phone
-            option(value="3") 3. Man using laptop in data center
-            option(value="4") 4. Data Center
-            option(value="5") 5. Data Center - Zoomed In
-            option(value="6") 6. Data Visualization
-            option(value="7") 7. Silhouettes of Employees
-            option(value="8") 8. Conference Room of Employees
+            option(value="1") 1. People Commuting
+              option(value="2") 2. Hand holding mobile phone
+              option(value="3") 3. Man using laptop in data center
+              option(value="4") 4. Data Center
+              option(value="5") 5. Data Center - Zoomed In
+              option(value="6") 6. Data Visualization
+              option(value="7") 7. Silhouettes of Employees
+              option(value="8") 8. Employee Meeting
+              option(value="9") 9. Employee Meeting
+              option(value="10", selected="selected") 10. Employee Meeting
+              option(value="11") 11. Clapping Hands
         p Select A Layout
           select#layoutChoice
             option(value="A", selected="selected") 3 Featured Items and Asset Listing

@@ -413,7 +413,6 @@ $(document).ready(function() {
   sponsoredContent();
 
   $(window).on('resize',function(){
-    adjustEditWindowHeight();
     if($(window).width() < 960){
       if($('#assetsList li').length > 3) {
         $('.assetListingExpand').show();

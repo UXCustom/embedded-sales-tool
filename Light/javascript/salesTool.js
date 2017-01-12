@@ -443,8 +443,20 @@ $(document).ready(function() {
       {
         'id': '8',
         'src': 'images/hero/hero_images_08.jpg'
-      }
-    ]
+      },
+      {
+        'id': '9',
+        'src': 'images/hero/hero_images_09.jpg'
+      },
+      {
+        'id': '10',
+        'src': 'images/hero/hero_images_10.jpg'
+      },
+      {
+        'id': '11',
+        'src': 'images/hero/hero_images_11.jpg'
+      },
+    ];
 
     $('#heroImageChoice').change(function() {
       var clickedOption = $('#heroImageChoice option:selected').val(),
@@ -460,4 +472,8 @@ $(document).ready(function() {
     });
   }
   onClickChangeHero();
+
+  $(window).on('resize',function() {
+    adjustEditWindowHeight();
+  });
 });
