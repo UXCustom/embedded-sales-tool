@@ -66,7 +66,7 @@ $(document).ready(function() {
     $('.demo-site-nav .icon').removeClass("icon-arrow-up").addClass("icon-arrow-down");
   }
   var toggleMenuOnArrowClick = function() {
-    $(".demo-site-nav .icon").on("mousedown", function(){
+    $(".demo-site-nav-list-item.selected, .demo-site-nav .icon").on("mousedown", function(){
       if ($('.demo-site-nav').hasClass("hideNav")) {
         showSiteTypeNav();
       }
@@ -77,7 +77,7 @@ $(document).ready(function() {
 
   }
   var userSelectsSiteType = function() {
-    $('.demo-site-nav-list-item').on('mousedown',function() {
+    $('.demo-site-nav-list-item:not(.selected)').on('mousedown',function() {
       var oldSelection = $(".demo-site-nav-list-item.selected").attr("data-id");
       $(".demo-site-nav-list-item").removeClass("selected");
       $(this).addClass("selected");
