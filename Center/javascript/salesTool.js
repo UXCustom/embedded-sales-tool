@@ -17,7 +17,7 @@ $(document).ready(function() {
       {
         "id": "1",
         "name": "article",
-        "url": "http://productdevelopment.techtarget.com/projects/custom/prototypes/articleBased/sales-tool/"
+        "url": "http://productdevelopment.techtarget.com/projects/custom/prototypes/sales-tools/article"
       },
       {
         "id": "2",
