@@ -111,9 +111,12 @@ $(document).ready(function() {
   // end adjust height of demo tool window
 
 
+  var updatedCSS = $('#sheet1').attr('href');
+  localStorage.setItem('css', updatedCSS);
+
   $(".c1").spectrum({
       allowEmpty:true,
-      color: "#03a9f4",
+      color: "#0097d7",
       showInput: true,
       containerClassName: "full-spectrum",
       showInitial: true,
@@ -127,7 +130,7 @@ $(document).ready(function() {
 
   $(".c2").spectrum({
       allowEmpty:true,
-      color: "#ff9800",
+      color: "#455565",
       showInput: true,
       containerClassName: "full-spectrum",
       showInitial: true,

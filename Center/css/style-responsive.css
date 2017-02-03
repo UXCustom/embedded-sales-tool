@@ -4082,3 +4082,25 @@ body {
   -webkit-transform: rotate(180deg);
   transform: rotate(180deg);
 }
+
+#heroAssetContainer #heroImage #heroImageContainerOuter:before {
+  z-index: 1;
+  content: "";
+  top: 0;
+  left: 0;
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  background: -moz-linear-gradient(left, #27354f 2%, rgba(39, 53, 79, 0) 10%, rgba(39, 53, 79, 0) 90%, #27354f 98%);
+  /* FF3.6+ */
+  background: -webkit-gradient(linear, left top, right top, color-stop(2%, #27354f), color-stop(10%, rgba(39, 53, 79, 0)), color-stop(90%, rgba(39, 53, 79, 0)), color-stop(95%, #27354f));
+  /* Chrome,Safari4+ */
+  background: -webkit-linear-gradient(left, #27354f 2%, rgba(39, 53, 79, 0) 10%, rgba(39, 53, 79, 0) 90%, #27354f 98%);
+  /* Chrome10+,Safari5.1+ */
+  background: -o-linear-gradient(left, #27354f 2%, rgba(39, 53, 79, 0) 10%, rgba(39, 53, 79, 0) 90%, #27354f 98%);
+  /* Opera 11.10+ */
+  background: -ms-linear-gradient(left, #27354f 2%, rgba(39, 53, 79, 0) 10%, rgba(39, 53, 79, 0) 90%, #27354f 98%);
+  /* IE10+ */
+  background: linear-gradient(to right, #27354f 2%, rgba(39, 53, 79, 0) 10%, rgba(39, 53, 79, 0) 90%, #27354f 98%);
+  /* W3C */
+}

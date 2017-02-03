@@ -110,55 +110,58 @@ $(document).ready(function() {
   adjustEditWindowHeight();
   // end adjust height of demo tool window
 
+  var updatedCSS = $('#sheet1').attr('href');
+  localStorage.setItem('css', updatedCSS);
+
   $(".c1").spectrum({
-      allowEmpty:true,
-      color: "#03a9f4",
-      showInput: true,
-      containerClassName: "full-spectrum",
-      showInitial: true,
-      showPalette: true,
-      showSelectionPalette: true,
-      //- showAlpha: true,
-      maxPaletteSize: 10,
-      preferredFormat: "hex",
-      localStorageKey: "spectrum.demo"
+    allowEmpty:true,
+    color: "#437472",
+    showInput: true,
+    containerClassName: "full-spectrum",
+    showInitial: true,
+    showPalette: true,
+    showSelectionPalette: true,
+    //- showAlpha: true,
+    maxPaletteSize: 10,
+    preferredFormat: "hex",
+    localStorageKey: "spectrum.demo"
   });
 
   $(".c2").spectrum({
-      allowEmpty:true,
-      color: "#ff9800",
-      showInput: true,
-      containerClassName: "full-spectrum",
-      showInitial: true,
-      showPalette: true,
-      showSelectionPalette: true,
-      //- showAlpha: true,
-      maxPaletteSize: 10,
-      preferredFormat: "hex",
-      localStorageKey: "spectrum.demo"
+    allowEmpty:true,
+    color: "#ff9800",
+    showInput: true,
+    containerClassName: "full-spectrum",
+    showInitial: true,
+    showPalette: true,
+    showSelectionPalette: true,
+    //- showAlpha: true,
+    maxPaletteSize: 10,
+    preferredFormat: "hex",
+    localStorageKey: "spectrum.demo"
   });
 
   var colorValue1 = $(".c1").spectrum("get");
   var colorValue2 = $(".c2").spectrum("get");
-  $('span.colorText1').text(colorValue1);
-  $('span.colorText2').text(colorValue2);
+  $('.colorText1').text(colorValue1);
+  $('.colorText2').text(colorValue2);
 
   colorsObj = new Object();
 
-	$("input[type=color]").change(function() {
-	  colorKey = $(this).attr('class');
-	  colorValue = $(this).val().replace("#", "");
-	  createParams(colorKey, colorValue);
+  $("input[type=color]").change(function() {
+    colorKey = $(this).attr('class');
+    colorValue = $(this).val().replace("#", "");
+    createParams(colorKey, colorValue);
 
-		var updatedCSS = $('#sheet1').attr('href');
+    var updatedCSS = $('#sheet1').attr('href');
     localStorage.setItem('css', updatedCSS);
 
-		var colorValue1 = $(".c1").spectrum("get");
-		var colorValue2 = $(".c2").spectrum("get");
+    var colorValue1 = $(".c1").spectrum("get");
+    var colorValue2 = $(".c2").spectrum("get");
 
-		$('p.colorText1').text(colorValue1);
-		$('p.colorText2').text(colorValue2);
-	});
+    $('span.colorText1').text(colorValue1);
+    $('span.colorText2').text(colorValue2);
+  });
 
 	function createParams (colorKey, colorValue) {
 	  colorsObj[colorKey] = colorValue;
@@ -174,7 +177,7 @@ $(document).ready(function() {
 		$("#sheet1").attr("href", localStorage.getItem('css'));
 	}
 
-  /* No longer needed due to Site Type Switch
+  // No longer needed due to Site Type Switch
   $('#moodChoice').on('change', function() {
     if ($(this).val() == 'A') {
       window.location = "../Center";
@@ -184,7 +187,7 @@ $(document).ready(function() {
       window.location = "../Light";
     }
 	});
-	*/
+
 
   $('#topicChoice').on('change', function() {
     if ($(this).val() == 'One') {
