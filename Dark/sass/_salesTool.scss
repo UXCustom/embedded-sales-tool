@@ -113,7 +113,7 @@
 #editWindow .c2 {
   padding-bottom: 15px;
   width: 49%;
-  display: inline-block;
+  display: inline;
 }
 #editWindow .colorText1,
 #editWindow .colorText2 {
@@ -199,6 +199,7 @@ body {position: relative;}
   color: #b3b3b3;
 }
 
+
 /* demo-site-nav */
 #editWindow .demo-site-nav {
   color: #fff;
@@ -217,6 +218,7 @@ body {position: relative;}
 #editWindow .demo-site-nav.show li:hover {
   background: #fff;
   color: #00b3ac;
+
 }
 #editWindow .demo-site-nav .icon {
   color: #00b3ac;
@@ -233,4 +235,9 @@ body {position: relative;}
   -moz-transform:rotate(180deg);
   -webkit-transform:rotate(180deg);
   transform:rotate(180deg);
+}
+#editWindow .demo-settings .colorpickerContainer,
+#editWindow .demo-settings .colorText {
+  display: inline-block;
+  width: 49%;
 }

@@ -3906,7 +3906,7 @@ video::-webkit-media-controls-start-playback-button {
 #editWindow .c2 {
   padding-bottom: 15px;
   width: 49%;
-  display: inline-block;
+  display: inline;
 }
 
 #editWindow .colorText1,
@@ -4081,6 +4081,12 @@ body {
   -moz-transform: rotate(180deg);
   -webkit-transform: rotate(180deg);
   transform: rotate(180deg);
+}
+
+#editWindow .demo-settings .colorpickerContainer,
+#editWindow .demo-settings .colorText {
+  display: inline-block;
+  width: 49%;
 }
 
 #heroAssetContainer #heroImage #heroImageContainerOuter:before {

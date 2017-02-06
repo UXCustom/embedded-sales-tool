@@ -124,14 +124,16 @@ html.no-js.gt-ie8(dir='ltr', lang='en')
           select#socialChoice
             option(value="A", selected="selected") With Social and Ad
             option(value="B") No Social or Ad
-        .c1
-          label(for="html5colorpicker-color1") Pick Color 1
-          input.c1(name="html5colorpicker-color1" type="color", id="html5colorpicker-color1", style="width:100%;")
-          span.colorText1
-        .c2
-          label(for="html5colorpicker-color2") Pick Color 2
-          input.c2(name="html5colorpicker-color2" type="color", id="html5colorpicker-color2", style="width:100%;")
-          span.colorText2
+        div.colorpickerContainer
+          label Client Color 1
+          .c1
+            input.c1(name="html5colorpicker-color1" type="color", id="html5colorpicker-color1", style="width:100%;")
+          span.colorText.colorText1
+        div.colorpickerContainer
+          label Client Color 2
+          .c2
+            input.c2(name="html5colorpicker-color2" type="color", id="html5colorpicker-color2", style="width:100%;")
+          span.colorText.colorText2
       div.demo-footer
         a(title="Email These Settings").demo-footer-button.demo-button-email Email
         button(title="Download PDF").demo-footer-button.demo-button-pdf(onclick="javascript:generatePDF();") PDF
